@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "add";
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Project.Models.Customer
+<html>
+    <head>
+        <title>Add User</title>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <style>
+            body
+            {
+                background-color:gray;
+            }
+
+        </style>
+        
+        @Scripts.Render("~/bundles/jquery")
+        <script>
+
+            $(document).ready(function () {
+
+                $('#checking').hide();
+
+                $('#Name').blur(function () {
+
+                    var s = $('#Name').val();
+                    $('#checking').show();
+                    $.getJSON("/Home/check?Name=" + s, function (data) {
+
+                        $('#checking').hide();
+                        if (data==true) {
+                            $('#res').text("User Already Exists.");
+
+                        }
+                        else {
+                            $('#res').text("User Name is Available Here. ");
+                        }
+
+                    });
+
+
+
+                });
+
+            });
+
+        </script>
+
+        
+
+    </head>
+
+    <body >
+           <div class="row">
+         <div class="col-md-3">
+              <div class="list-group">
+
+                  <a href="#"><img src="~/Images/g.png" /> </a>
+                  <br /><br />
+                   <a href="#"><img src="~/Images/white-mob.png" /> </a><br />
+              </div>
+            </div>
+        <div class="col-md-6">
+           
+                         
+            <div id="register" class="animate form">
+                    
+            @using (Html.BeginForm("AddCustomer", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new account.</h4>
+    <hr />
+ 
+    <div class="form-group">
+                               <strong> <div id="checking">Chacking...</div></strong> 
+                        <strong> <div id="res"></div></strong>
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.Name)
+            @*<br /><button type="button" class="btn btn-danger pull-right" id="chk">Check</button> <br />*@
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.Password)
+        </div>
+    </div>
+       <div class="form-group">
+        @Html.LabelFor(m => m.CNIC, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.CNIC, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.CNIC)
+        </div>
+    </div>
+                
+                
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.PhoneNumber)
+        </div>
+    </div>
+                
+       <div class="form-group">
+        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.Address)
+        </div>
+    </div>
+            <div class="form-group">
+        @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+           @* @Html.DropDownList("c")*@
+            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.Country)
+        </div>
+    </div>
+                 <div class="form-group">
+        @Html.LabelFor(m => m.Date, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.Date)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-6">
+            <input type="submit" class="btn btn-success pull-right" value="Register" />
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                @*<form class="form-horizontal" role="form" method="post" action="/Home/AddCustomer" onsubmit="validat" autocomplete="on">
+                  <strong> Name: </strong><input type="text" class="form-control navbar-success" required="required" id="name" name="name">
+          <br />  
+                        <button type="button" class="btn btn-danger pull-right" id="chk">Check</button> <br /><br />
+                  
+    
+                    <strong>Password:</strong> <input type="password" class="form-control" id="inputSuccess3q" required="required" name="Password"><br />
+                   <strong>CNIC:</strong> <input type="text" required="required" class="form-control" id="inputSuccess33" name="CNIC"><br />
+                   <strong>PhoneNumber:</strong> <input type="text" class="form-control" id="inputSuccess34" required="required" name="PhoneNumber"><br />
+                   <strong>Address:</strong> <input type="text" class="form-control" required="required" id="inputSuccess36" name="Address"><br />
+                   <strong>Country:
+
+                   </strong>
+              
+                      <select class="selectpicker"  data-style="btn-primary" name="Country" data-width="75%">
+                         <option class="active">Pakistan</option>
+                          <option >India</option>
+                          <option class="active">UK</option>
+                          <option class="active">Japan</option>
+                          </select><br />
+                  <br />
+
+                      <strong>Date: </strong><input type="text" class="form-control" id="inputSuccess35" name="Date"><br />
+                   <input type="submit" class="btn btn-primary pull-right" value="Submit"/>
+                   </form>*@
+                
+            </div>
+             </div>
+          <div class="col-md-3" >
+              <div class="list-group">
+                  <a href="#"><img src="~/Images/b.png" /> </a><br /><br />
+                  <a href="#"><img src="~/Images/img-mid.png" /> </a>
+                  <br /><br />     
+              </div>
+            </div>
+        </div>
+        </body>
+    </html>

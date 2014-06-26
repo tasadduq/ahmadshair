@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "loginSuccess";
+    Layout = null;
+}
+
+@model Project.Models.Customer
+                          
+@{
+    Project.Models.Database1Entities3 db = new Project.Models.Database1Entities3();
+ }
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Samsung</title>
+            <link href="~/bootstrap.css" rel="stylesheet" />
+             <script src="~/bootstrap.js"></script>
+               <style>
+            body
+            {
+                background-color:gray;
+            }
+        </style>
+
+        @Scripts.Render("~/bundles/jquery")
+        <script>
+
+            $(document).ready(function () {
+
+                $('#checking').hide();
+
+                $('#chk').click(function () {
+
+                    var s = $('#show').val();
+                    $('#checking').show();
+                    $.getJSON("/Home/search?show=" + s, function (data) {
+                        $('#checking').hide();
+                        if (data != null) {
+                            $('#ress').text("You Have Searched This Product");
+                            $('#res').text("Name:       "+data.Name);
+                            $('#re').text("Price:       "+data.Price);
+                            $('#r').text("Description:      "+data.Description);
+                        }
+                        else {
+                            $('#res').text("Sorry...  This Product Does Not Exist in Store!!!");
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+        </head>
+    <body >
+        <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <a class="navbar-brand" href="#" ><strong > SAMSUNG</strong><br /> PRODUCTS</a>
+            @*   <h6>@ViewBag.c</h6>*@
+       </div>
+       <div>
+
+             <ul class="nav navbar-nav">
+                    <li ><a href="/Home/LoginSuccess">Home</a></li>
+                    <li ><a href="/Home/Help"> Help</a></li>
+                    <li ><a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> About Us</a></li>   
+             
+                            
+                           
+                </ul>
+                       <form class="navbar-form navbar-left pull-right"  role="search">
+                             <a href="/Home/Index"><button type="button" class="btn btn-warning "> Logout</button></a>
+                        @*    <a href="/Home/add"><button type="button" class="btn btn-primary "> Sign Up</button></a>
+                            <a href="/Admin/adminlogin"><button type="button" class="btn btn-info "> Upload</button></a>*@
+                             <input type="text" placeholder="search" name="show" id="show" class="form-control"/>
+                                <button type="button" class="btn btn-danger" id="chk">Search</button>
+                            @*<div class="form-group">*@
+                                
+                           @* </div>*@
+                             
+                       </form>
+        
+                         
+            </div>
+      </nav>
+        
+
+           
+
+
+         @*<div class="row">
+            <div class="col-md-3">
+              <div class="list-group">
+
+                  <a href="#" class="list-group-item active">Catagories</a>
+                  <a href="/MobilePhone/mobAll" class="list-group-item">Mobile Phones</a>
+                  <a href="/Laptop/lapAll" class="list-group-item ">Laptops</a>
+                  <a href="/Tablet/tabAll" class="list-group-item ">Tablets</a>
+                  <a href="/Television/tvAll" class="list-group-item ">TV's</a>
+                  <a href="/Camera/camAll" class="list-group-item ">Cameras</a>
+                  <br />
+                
+              </div>
+
+                <div class="list-group">
+
+                  <a href="#" class="list-group-item active">Range Catagories</a>
+                  <a href="/MobilePhone/mobAll" class="list-group-item">Rs: 5000 to 10000</a>
+                  <a href="/Laptop/lapAll" class="list-group-item ">Rs: 10000 to 15000</a>
+                  <a href="/Tablet/" class="list-group-item ">Rs: 15000 to 20000</a>
+                  <a href="/Television/tvAll" class="list-group-item ">Rs: 20000 to 25000</a>
+                  <a href="/Camera/camAll" class="list-group-item ">Rs: 25000 to 70000</a>
+                  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        
+              </div>
+            </div>
+           
+         *@
+               <div class="row">
+                   <div class="col-md-2"></div>
+                   <div class="col-md-6">
+                 <strong> <div id="checking">Chacking...</div></strong>
+                       @* <strong> <div id="res"></div><br /></strong>*@
+             <strong> <h2><div id="ress"> </div></h2></strong>            
+             <strong> <div id="res"> </div></strong>
+                         <strong> <div id="re"> </div></strong>
+                         <strong> <div id="r"> </div></strong>
+                       </div>
+                   </div>
+
+
+
+
+
+
+        
+   @using (Html.BeginForm("Detail", "Product", FormMethod.Post))
+{
+    <div>
+     @foreach (var item in @db.Products)
+        {
+           @* <a href="/Product/Detail/@item.Id"> <img src="~/images/@item.Image" class="img-thumbnail" style="height:250px; width:250px" alt="MyPic" /></a>*@
+             <div class="col-md-3" >
+                     <div class="span4">
+                        <div class="well">
+                            <a href="/Product/Detail/@item.Id">
+                                <img class="img-polaroid" src="~/images/@item.Image" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>@item.Name</h4>
+                            <p>@item.Price</p>
+                        </div>
+
+                    </div>
+
+            </div>      
+             
+        }
+        
+     </div> 
+           
+
+}
+ 
+
+
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <label>Copyright © 2014 Allwebco Design Corporation All rights reserved.</label>
+               <a href="/Home/Help"> Term of Use</a> 
+           <label> || </label>
+               <a href="/Home/Help">Privacy Policy</a>
+    </div>
+            <div>
+
+               
+                       <form class="navbar-form navbar-left pull-right" role="search">
+                             
+                            <a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> Contact Us</a>
+                   
+                          </form>
+                         
+            </div>
+      </nav>
+    </body>
+    </html>

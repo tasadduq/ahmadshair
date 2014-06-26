@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "order";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Samsung</title>
+            <link href="~/bootstrap.css" rel="stylesheet" />
+             <script src="~/bootstrap.js"></script>
+               <style>
+            body
+            {
+                background-color:gray;
+            }
+        </style>
+
+        @Scripts.Render("~/bundles/jquery")
+        <script>
+
+            $(document).ready(function () {
+
+                $('#checking').hide();
+
+                $('#chk').click(function () {
+
+                    var s = $('#show').val();
+                    $('#checking').show();
+                    $.getJSON("/Home/search?show=" + s, function (data) {
+                        $('#checking').hide();
+                        if (data != null) {
+                            $('#ress').text("You Have Searched This Product");
+                            $('#res').text("Name:       "+data.Name);
+                            $('#re').text("Price:       "+data.Price);
+                            $('#r').text("Description:      "+data.Description);
+                        }
+                        else {
+                            $('#res').text("Sorry...  This Product Does Not Exist in Store!!!");
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+        </head>
+    <body >
+        <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <a class="navbar-brand" href="#" ><strong > SAMSUNG</strong><br /> PRODUCTS</a>
+               <h6>@ViewBag.c</h6>
+       </div>
+       <div>
+
+             <ul class="nav navbar-nav">
+                    <li ><a href="/Home/Index">Home</a></li>
+                    <li ><a href="/Home/Help"> Help</a></li>
+                    <li ><a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> About Us</a></li>   
+             
+                            
+                           
+                </ul>
+                       <form class="navbar-form navbar-left pull-right"  role="search">
+                           @*  <a href="/Home/signin"><button type="button" class="btn btn-warning "> Sign In</button></a>
+                            <a href="/Home/add"><button type="button" class="btn btn-primary "> Sign Up</button></a>
+                            <a href="/Admin/adminlogin"><button type="button" class="btn btn-info "> Upload</button></a>*@
+                             <input type="text" placeholder="search" name="show" id="show" class="form-control"/>
+                                <button type="button" class="btn btn-danger" id="chk">Search</button>
+                            @*<div class="form-group">*@
+                                
+                           @* </div>*@
+                          
+                       </form>
+                         
+            </div>
+      </nav>
+       
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                @*<form method="post" action="/Product/order">*@         
+                
+
+                    <form class="form-horizontal" role="form" method="post" action="/Home/Index" onsubmit="validat" autocomplete="on">
+                 @* <strong> Debet Card Number: </strong><input type="text" class="form-control navbar-success" required="required" id="name" name="name" placeholder="Enter Debet Card Number"/>
+          <br />
+                   <strong>CNIC:</strong> <input type="text" required="required" class="form-control" id="inputSuccess33" name="CNIC" placeholder="Enter CNIC Number"><br />
+                   <strong>PhoneNumber:</strong> <input type="text" class="form-control" id="inputSuccess34" required="required" name="PhoneNumber" placeholder="Enter Phone Number"><br />
+                   <strong>Address:</strong> <input type="text" class="form-control" required="required" id="inputSuccess36" name="Address" placeholder="Address to be receive Delivery" ><br />*@
+                <h2>Dear Customer!</h2>
+                <h2><p>Thank You! For Samsung Products Online Shopping  </p>   </h2>
+                   <input type="submit" class="btn btn-primary pull-right" value="Home"/>
+                   </form>
+
+
+@*                <input type="text" placeholder="Enter Your Debet Card Number" required="required" data-required="Should not be Empty" /><br />
+                <input type="text" placeholder="Parmanent Address" required="required" /><br />
+                <input type="text" placeholder="Address to be Delivery" required="required" /><br />
+                
+                </form>*@
+            </div>
+
+        </div>
+        
+
+
+
+
+        
+ 
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <label>Copyright © 2014 Allwebco Design Corporation All rights reserved.</label>
+               <a href="/Home/Help"> Term of Use</a> 
+           <label> || </label>
+               <a href="/Home/Help">Privacy Policy</a>
+    </div>
+            <div>
+
+               
+                       <form class="navbar-form navbar-left pull-right" role="search">
+                             
+                           <a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> Contact Us</a>
+                   
+                          </form>
+                         
+            </div>
+      </nav>
+</body>
+</html>
+

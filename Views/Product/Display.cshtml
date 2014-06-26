@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Display";
+    Layout = null;
+}
+<html>
+    <head>
+             <link href="~/bootstrap.css" rel="stylesheet" />
+             <script src="~/bootstrap.js"></script>
+        <style>
+            body
+            {
+                background-color:gray;
+            }
+        </style>
+     </head>
+    <body>
+@{
+    Project.Models.Database1Entities3 db = new Project.Models.Database1Entities3();
+ }
+
+
+<nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <a class="navbar-brand" href="#" ><strong > SAMSUNG</strong><br /> PRODUCTS</a>
+               <h6>@ViewBag.c</h6>
+       </div>
+       <div>
+
+             <ul class="nav navbar-nav">
+                    <li ><a href="/Home/Index">Home</a></li>
+                    <li ><a href="/Home/Help"> Help</a></li>
+                    <li ><a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> About Us</a></li>   
+             
+                            
+                           
+                </ul>
+                       <form class="navbar-form navbar-left pull-right"  role="search">
+                            <a href="/Home/Index"><button type="button" class="btn btn-warning "> Log Out</button></a>
+                           @* <a href="/Home/add"><button type="button" class="btn btn-primary "> Sign Up</button></a>*@
+
+                            <a href="/Product/upload"><button type="button" class="btn btn-info "> Upload</button></a>
+                             <input type="text" placeholder="search" name="show" id="show" class="form-control"/>
+                                <button type="button" class="btn btn-danger" id="chk">Search</button>
+                            @*<div class="form-group">*@
+                                
+                           @* </div>*@
+                          
+                       </form>
+                         
+            </div>
+      </nav>
+        
+       @* <marquee direction="left" behavior="alternate" scrollAmount=2>*@
+
+@using (Html.BeginForm("Detail", "Product", FormMethod.Post))
+{
+    <div>
+     @foreach (var item in @db.Products)
+        {
+           @* <a href="/Product/Detail/@item.Id"> <img src="~/images/@item.Image" class="img-thumbnail" style="height:300px; width:300px" alt="MyPic"  /></a>*@
+            <div class="col-md-3" >
+                     <div class="span4">
+                        <div class="well">
+                            <a href="/Product/Detail/@item.Id">
+                                <img class="img-polaroid" src="~/images/@item.Image" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>@item.Name</h4>
+                            <p>@item.Price</p>
+                            <a href="/Product/update/@item.Id">Update</a>
+                            <a href="/Product/Delete/@item.Id">Delete</a>
+                        </div>
+
+                    </div>
+
+            </div>
+    
+         
+                          
+        }
+        
+     </div> 
+           
+
+}
+
+        @*    </marquee>*@
+        
+            
+
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <label>Copyright © 2014 Allwebco Design Corporation All rights reserved.</label>
+               <a href="/Home/Help"> Term of Use</a> 
+           <label> || </label>
+               <a href="/Home/Help">Privacy Policy</a>
+    </div>
+            <div>
+
+               
+                       <form class="navbar-form navbar-left pull-right" role="search">
+                             
+                            <a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> Contact Us</a>
+                   
+                          </form>
+                         
+            </div>
+      </nav>
+        </body>
+ </html>

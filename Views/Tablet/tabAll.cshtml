@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "tabAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Samsung</title>
+            <link href="~/bootstrap.css" rel="stylesheet" />
+             <script src="~/bootstrap.js"></script>
+               <style>
+            body
+            {
+                background-color:gray;
+            }
+
+        </style>
+        </head>
+    <body >
+        
+         <div class="row">
+            <div class="col-md-3">
+              <div class="list-group">
+
+                  <a href="#" class="list-group-item active">Catagories</a>
+                  <a href="/MobilePhone/mobAll" class="list-group-item">Mobile Phones</a>
+                  <a href="/Laptop/lapAll" class="list-group-item ">Laptops</a>
+                  <a href="/Tablet/tabAll" class="list-group-item ">Tablets</a>
+                  <a href="/Television/tvAll" class="list-group-item ">TV's</a>
+                  <a href="/Camera/camAll" class="list-group-item ">Cameras</a>
+                  <br />
+                 
+              </div>
+            </div>
+           
+
+            <div class="col-md-3" >
+                @*<div class="alert alert-danger"><strong> Browse Products</strong></div><br />
+                <br />*@
+                <div class="row-fluid">
+
+                    <div class="span4">
+                        <div class="well">
+                            <a href="/Tablet/tab1">
+                                <img class="img-polaroid" src="~/images/imgg6.png" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>Samsung N5</h4>
+                            <p>19000 Rs</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+              
+
+           </div>
+
+                <div class="col-md-3" >
+                     <div class="span4">
+                        <div class="well">
+                            <a href="/Tablet/tab2">
+                                <img class="img-polaroid" src="~/images/imgg11.png" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>Samsung LG60</h4>
+                            <p>23000 Rs</p>
+                        </div>
+                    </div>
+
+                   </div>
+
+
+                <div class="col-md-3" >
+                     <div class="span4">
+                        <div class="well">
+                            <a href="/Tablet/tab3">
+                                <img class="img-polaroid" src="~/images/imgg12.png" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>Samsung s-Note</h4>
+                            <p>32000 Rs</p>
+                        </div>
+
+                    </div>
+
+            </div>
+            
+
+        </div>
+
+
+    </body>
+    </html>
+

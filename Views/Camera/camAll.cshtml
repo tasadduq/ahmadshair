@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "camAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Samsung</title>
+            <link href="~/bootstrap.css" rel="stylesheet" />
+             <script src="~/bootstrap.js"></script>
+               <style>
+            body
+            {
+                background-color:gray;
+            }
+
+        </style>
+        </head>
+    <body >
+        
+         <div class="row">
+            <div class="col-md-3">
+              <div class="list-group">
+
+                  <a href="#" class="list-group-item active">Catagories</a>
+                  <a href="/MobilePhone/mobAll" class="list-group-item">Mobile Phones</a>
+                  <a href="/Laptop/lapAll" class="list-group-item ">Laptops</a>
+                  <a href="/Tablet/tabAll" class="list-group-item ">Tablets</a>
+                  <a href="/Television/tvAll" class="list-group-item ">TV's</a>
+                  <a href="/Camera/camAll" class="list-group-item ">Cameras</a>
+                  <br />
+                 
+              </div>
+            </div>
+           
+
+            <div class="col-md-3" >
+                @*<div class="alert alert-danger"><strong> Browse Products</strong></div><br />
+                <br />*@
+                <div class="row-fluid">
+
+                    <div class="span4">
+                        <div class="well">
+                            <a href="/Camera/cam1">
+                                <img class="img-polaroid" src="~/images/imgg2.png" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>Samsung Nikon 390</h4>
+                            <p>7500 Rs</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+              
+
+           </div>
+
+                <div class="col-md-3" >
+                     <div class="span4">
+                        <div class="well">
+                            <a href="/Camera/cam2">
+                                <img class="img-polaroid" src="~/images/imgg9.png" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>Samsung Nikon N700</h4>
+                            <p>6500 Rs</p>
+                        </div>
+                    </div>
+
+                   </div>
+
+
+                <div class="col-md-3" >
+                     <div class="span4">
+                        <div class="well">
+                            <a href="/Camera/cam3">
+                                <img class="img-polaroid" src="~/images/imgg10.png" alt="NotFound" style="height:140px; width:140px" />
+
+                            </a>
+                            <h4>Samsung Nikon 50XLG</h4>
+                            <p>13000 Rs</p>
+                        </div>
+
+                    </div>
+
+            </div>
+            
+
+        </div>
+
+
+    </body>
+    </html>
+

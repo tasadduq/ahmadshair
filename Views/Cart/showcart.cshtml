@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "showcart";
+    Layout = null;
+}
+
+@*@model Project.Models.Cart*@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+  
+      <link href="~/bootstrap.css" rel="stylesheet" />
+      <script src="~/bootstrap.js"></script>
+    <style>
+        body
+        {
+            background-color:gray;
+        }
+    </style>
+</head>
+<body>
+  
+      <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <a class="navbar-brand" href="#" ><strong > SAMSUNG</strong><br /> PRODUCTS</a>
+               
+        </div>
+            <div>
+
+                <ul class="nav navbar-nav">
+                    <li ><a href="/Home/Index">Home</a></li>
+                    <li ><a href="/Home/Help"> Help</a></li>
+                    <li ><a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> About Us</a></li>
+                          
+                           
+                </ul>
+                       <form class="navbar-form navbar-left pull-right" role="search">
+                             <a href="/Home/signin"><button type="button" class="btn btn-warning "> Sign In</button></a>
+                           
+                  
+                   
+                            <div class="form-group">
+                                <input type="text" placeholder="search"  class="form-control"/>
+                                 <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                           
+                           
+                          </form>
+                         
+            </div>
+      </nav>
+@*    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+    <h1>Thank You For Online Shopping</h1><br />
+                      
+     <a href="/Home/Index"><button type="button" class="btn btn-info pull-right">Continue Shopping</button></a>
+            <a href="/Product/shopping"><button type="button" class="btn btn-warning pull-right">View Cart</button></a>
+            </div>
+        </div>
+  
+*@
+
+
+       <div class="row">
+           <div class="col-md-2"></div>
+           <div class="col-md-6">
+              
+        <table border="0" class="span4">
+            <tr >
+            <td  style="width: 30%;"><strong> Category</strong></td>
+            <td style="width: 40%;"><strong>Name</strong></td><td style="width: 20%;"><strong>Price</strong></td><td style="width: 10%;"><strong>Choice</strong></td></tr>
+           
+            @foreach (var s in Model)
+            {
+               <tr>
+                  <td>@s.Category</td>
+                  <td>
+                    @s.Name
+                  </td>
+                 <td>
+
+                    @s.Price
+                </td>
+                <td><a href="/Cart/delete/@s.Id"> Remove</a></td>
+            </tr>
+            
+            }
+
+        </table><br /><br />
+               
+         <a href="/Home/Index"><button type="button" class="btn btn-info pull-right">Continue Shopping</button></a>
+            <a href="/Product/PlaceOrder"><button type="button" class="btn btn-warning pull-right">Place Order</button></a>
+               
+               </div>
+           </div>
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <nav class="navbar navbar-default" role="navigation">
+
+       <div class="navbar-header">
+           <a href="#" > <img src="~/Images/mono.png"/></a>
+        <label>Copyright © 2014 Allwebco Design Corporation All rights reserved.</label>
+               <a href="/Home/Help"> Term of Use</a> 
+           <label> || </label>
+               <a href="/Home/Help">Privacy Policy</a>
+    </div>
+            <div>
+
+               
+                       <form class="navbar-form navbar-left pull-right" role="search">
+                             
+                           <a href="https://www.facebook.com/ahmed.shair.908?ref=tn_tnmn"> Contact Us</a>
+                   
+                          </form>
+                         
+            </div>
+      </nav>
+</body>
+</html>
+
